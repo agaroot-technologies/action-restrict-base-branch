@@ -1,11 +1,15 @@
 import * as core from '@actions/core';
 
-import { getRules } from './input';
+import { getBaseBranchName, getHeadBranchName, getRules } from './input';
+import { main } from './main';
 
 (() => {
   try {
-    const rules = getRules();
-    console.log(rules);
+    main({
+      base: getBaseBranchName(),
+      head: getHeadBranchName(),
+      rules: getRules(),
+    });
   } catch (error) {
     if (error instanceof Error) {
       core.error(error);
