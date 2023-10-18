@@ -1,0 +1,12 @@
+name: Restrict base branch
+description: Restrict pull requests to merge only into specific branches
+branding:
+  icon: git-pull-request
+  color: red
+runs:
+  using: node20
+  main: dist/index.js
+inputs:
+  rules:
+    description: A rule set that allows branch merges.
+    required: true
