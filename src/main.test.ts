@@ -111,6 +111,6 @@ describe('main', () => {
 
     expect(core.warning).not.toHaveBeenCalled();
     expect(core.setFailed).toHaveBeenCalledTimes(1);
-    expect(core.setFailed).toHaveBeenCalledWith(`Do not allow to merge this pull request.\nallowed heads: ${rules[0]!.heads.join(', ')}`);
+    expect(core.setFailed).toHaveBeenCalledWith(`The branch name does not follow the rules. The allowed branch name rules are as follows: ${rules[0]!.heads.join(', ')}`);
   });
 });
