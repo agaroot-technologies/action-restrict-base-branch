@@ -41,9 +41,11 @@ export const getRules = (): Rule[] => {
   const input = core.getMultilineInput('rules');
 
   return input.map((line) => {
-    const [base, ...heads] = line.split(' ');
+    const [first , others] = line.split('<-');
+    const base = first?.trim() ?? '';
+    const heads = others?.trim()?.split(' ') ?? [];
 
-    if (!base || heads.length <= 0) {
+    if (base.length <= 0 || heads.length <= 0) {
       throw new Error(`Invalid rule: ${line}`);
     }
 

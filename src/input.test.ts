@@ -85,7 +85,7 @@ describe('input', () => {
 
   describe('getRules', () => {
     it('Should return rules', () => {
-      inputs['rules'] = ['main development', 'development feature/* chore/*'];
+      inputs['rules'] = ['main <- development', 'development <- feature/* chore/*'];
 
       const rules = getRules();
 
@@ -95,7 +95,7 @@ describe('input', () => {
     });
 
     it('Should throw error - invalid rule', () => {
-      inputs['rules'] = ['main development', 'development'];
+      inputs['rules'] = ['main <- development', 'development'];
 
       expect(() => getRules()).toThrow('Invalid rule: development');
     });
