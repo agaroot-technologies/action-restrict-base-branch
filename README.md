@@ -22,9 +22,9 @@ jobs:
       - uses: agaroot-technologies/action-restrict-base-branch@v1
         with:
           rules: |
-            main development
-            development feature/* bugfix/* refactor/* chore/* deps/*
-            feature/* feature/**/*
+            main <- development
+            development <- feature/* bugfix/* refactor/* chore/* deps/*
+            feature/* <- feature/**/*
 ```
 
 ## 🔧 Configurations
@@ -33,15 +33,22 @@ jobs:
 
 A list of rules that restrict pull requests to be merged into only certain branches.
 
-Each rule is a space-separated list of branch patterns.
+Each rule is a list of branch patterns separated by `<-`.
 
-The first element specifies the name of the base branch, and the second element specifies the name of the head branch.
+The left-hand side specifies the name of the base branch, and the right-hand side specifies the name of the head branch.
 
 If you want to merge only development branches into the main branch, configure as follows.
 
 ```yaml
 rules: |
-  main development
+  main <- development
+```
+
+Multiple branch names can be specified on the right side, separated by spaces.
+
+```yaml
+rules: |
+  main <- development staging
 ```
 
 You can also use Glob to specify the branch name.
@@ -52,15 +59,15 @@ If you want to merge only feature and bugfix branches into the development branc
 
 ```yaml
 rules: |
-  development feature/* bugfix/*
+  development <- feature/* bugfix/*
 ```
 
 Also, multiple rules can be specified by adding a new line as shown below.
 
 ```yaml
 rules: |
-  main development
-  development feature/* bugfix/*
+  main <- development
+  development <- feature/* bugfix/*
 ```
 
 ## 🤝 Contributing
