@@ -1,0 +1,16 @@
+{
+  "name": "@agaroot/action-restrict-base-branch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Restrict pull requests to merge only into specific branches",
+  "homepage": "https://github.com/agaroot-technologies/action-restrict-base-branch",
+  "bugs": {
+    "url": "https://github.com/agaroot-technologies/action-restrict-base-branch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agaroot-technologies/action-restrict-base-branch.git"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@8.9.2"
+}
