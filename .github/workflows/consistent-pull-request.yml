@@ -1,0 +1,40 @@
+name: Consistent Pull Request
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  consistent-pull-request:
+    name: Consistent Pull Request
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check head branch name
+        uses: ./
+        with:
+          rules:
+            main <- feature/* bugfix/* refactor/* chore/* deps/*
+
+      - name: Consistent pull request title and label
+        if: >-
+          github.event.action != 'synchronize' &&
+          github.event.pull_request.state == 'open' &&
+          !contains(fromJSON('["main", "preview"]'), github.head_ref)
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          label=$(echo "${HEAD_REF}" | cut -d'/' -f1)
+          pr_title_regex="^\[${label}\]"
+          if ! [[ "${PR_TITLE}" =~ ${pr_title_regex} ]]; then
+            PR_TITLE="[${label}] ${PR_TITLE}"
+          fi
+          gh pr edit "${PR_NUMBER}" --title "${PR_TITLE}" --add-label "${label}"
