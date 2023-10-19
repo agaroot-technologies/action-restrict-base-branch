@@ -16,16 +16,25 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check head branch name
-        uses: ./
-        with:
-          rules:
-            main <- feature/* bugfix/* refactor/* chore/* deps/*
+        if: >-
+          github.event.action == 'opened' &&
+          github.head_ref != 'main'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          PR_NUMBER: ${{ github.event.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! [[ "${HEAD_REF}" =~ ^(feature|bugfix|refactor|chore|deps)/.* ]]; then
+              echo "::error::Branch name '${HEAD_REF}' does not follow naming convention"
+              gh pr close "${PR_NUMBER}"
+              exit 1
+          fi
 
       - name: Consistent pull request title and label
         if: >-
           github.event.action != 'synchronize' &&
           github.event.pull_request.state == 'open' &&
-          !contains(fromJSON('["main", "preview"]'), github.head_ref)
+          github.head_ref != 'main'
         env:
           HEAD_REF: ${{ github.head_ref }}
           PR_TITLE: ${{ github.event.pull_request.title }}
@@ -38,3 +47,9 @@ jobs:
             PR_TITLE="[${label}] ${PR_TITLE}"
           fi
           gh pr edit "${PR_NUMBER}" --title "${PR_TITLE}" --add-label "${label}"
+
+      - name: Check base branch name
+        uses: ./
+        with:
+          rules:
+            main <- feature/* bugfix/* refactor/* chore/* deps/*
