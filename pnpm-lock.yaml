@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@agaroot/eslint-config-common':
-    specifier: 2.1.0
-    version: 2.1.0(@typescript-eslint/eslint-plugin@6.9.0)(@typescript-eslint/parser@6.9.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.0)(eslint-plugin-unicorn@48.0.1)(eslint-plugin-unused-imports@3.0.0)(eslint@8.52.0)
+    specifier: 2.1.1
+    version: 2.1.1(@typescript-eslint/eslint-plugin@6.9.0)(@typescript-eslint/parser@6.9.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.0)(eslint-plugin-unicorn@48.0.1)(eslint-plugin-unused-imports@3.0.0)(eslint@8.52.0)
   '@agaroot/eslint-config-jest':
     specifier: 2.1.0
     version: 2.1.0(eslint-plugin-jest@27.6.0)(eslint@8.52.0)
@@ -113,8 +113,8 @@ packages:
       undici: 5.26.3
     dev: false
 
-  /@agaroot/eslint-config-common@2.1.0(@typescript-eslint/eslint-plugin@6.9.0)(@typescript-eslint/parser@6.9.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.0)(eslint-plugin-unicorn@48.0.1)(eslint-plugin-unused-imports@3.0.0)(eslint@8.52.0):
-    resolution: {integrity: sha512-TpxhSm9VLZuFGGJK3SJAZrJzxVEnwZF6exAMVmA9z3o07EPWuP2lYOSWQvvLFYNFd8woamk1nE+Ez0RjnWMq+Q==}
+  /@agaroot/eslint-config-common@2.1.1(@typescript-eslint/eslint-plugin@6.9.0)(@typescript-eslint/parser@6.9.0)(eslint-import-resolver-typescript@3.6.1)(eslint-plugin-import@2.29.0)(eslint-plugin-unicorn@48.0.1)(eslint-plugin-unused-imports@3.0.0)(eslint@8.52.0):
+    resolution: {integrity: sha512-qDDGWoy2p5VYL6byohaU+7Iw7Kltoq/bd7Vx0uhvFjDegV+P5/4m9tizx0QNFJ9LZ0KaJAvSWSaT+NidFQjZQQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^6.0.0
       '@typescript-eslint/parser': ^6.0.0
