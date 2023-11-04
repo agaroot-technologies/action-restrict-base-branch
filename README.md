@@ -12,12 +12,14 @@ Create a workflow file under ```.github/workflows``` directory.
 ```yaml
 name: Restrict base branch
 on:
-  pull_request:
-    types: [opened, edited, reopened, synchronize]
+  pull_request_target:
+    types: [opened, edited, synchronize]
 
 jobs:
   restrict-base-branch:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: agaroot-technologies/action-restrict-base-branch@v1
         with:
