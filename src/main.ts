@@ -16,7 +16,7 @@ export const main = ({
 }: MainOptions) => {
   const rule = rules.find(rule => minimatch(base, rule.base));
   if (!rule) {
-    core.warning(`No rule found for base branch: ${base}`);
+    core.setFailed(`No rule found for base branch: ${base}`);
     return;
   }
 
