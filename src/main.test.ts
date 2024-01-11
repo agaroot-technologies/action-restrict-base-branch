@@ -90,16 +90,16 @@ describe('main', () => {
     });
   });
 
-  it('Should warn - no rule', () => {
+  it('Should fail - no rule', () => {
     const base = 'staging';
     const head = 'development';
     const rules = [{ base: 'main', heads: ['development'] }];
 
     main({ base, head, rules });
 
-    expect(core.warning).toHaveBeenCalledTimes(1);
-    expect(core.warning).toHaveBeenCalledWith(`No rule found for base branch: ${base}`);
-    expect(core.setFailed).not.toHaveBeenCalled();
+    expect(core.warning).not.toHaveBeenCalled();
+    expect(core.setFailed).toHaveBeenCalledTimes(1);
+    expect(core.setFailed).toHaveBeenCalledWith(`No rule found for base branch: ${base}`);
   });
 
   it('Should fail - no match', () => {
