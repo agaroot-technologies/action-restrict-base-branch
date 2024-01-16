@@ -1,5 +1,11 @@
 # @agaroot/action-restrict-base-branch
 
+## 1.0.2
+
+### Patch Changes
+
+- [#104](https://github.com/agaroot-technologies/action-restrict-base-branch/pull/104) [`32e4026`](https://github.com/agaroot-technologies/action-restrict-base-branch/commit/32e40261fc102387c437c24edb4aa3e6ff3aa6aa) Thanks [@Karibash](https://github.com/Karibash)! - Fix PR #84 forgetting to add the dist
+
 ## 1.0.1
 
 ### Patch Changes
