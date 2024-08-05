@@ -14,13 +14,13 @@ export const main = ({
   head,
   rules,
 }: MainOptions) => {
-  const rule = rules.find(rule => minimatch(base, rule.base));
+  const rule = rules.find((rule) => minimatch(base, rule.base));
   if (!rule) {
     core.setFailed(`No rule found for base branch: ${base}`);
     return;
   }
 
-  const match = rule.heads.some(pattern => minimatch(head, pattern));
+  const match = rule.heads.some((pattern) => minimatch(head, pattern));
   if (!match) {
     core.setFailed(`The branch name does not follow the rules. The allowed branch name rules are as follows: ${rule.heads.join(', ')}`);
   }
