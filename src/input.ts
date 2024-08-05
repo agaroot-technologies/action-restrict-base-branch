@@ -14,7 +14,7 @@ export const getPullRequestEvent = (): Exclude<WebhookPayload['pull_request'], u
 export const getBaseBranchName = (): string => {
   const { base = {} } = getPullRequestEvent();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
   const ref = base.ref;
 
   if (typeof ref === 'string') {
@@ -27,7 +27,7 @@ export const getBaseBranchName = (): string => {
 export const getHeadBranchName = (): string => {
   const { head = {} } = getPullRequestEvent();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
   const ref = head.ref;
 
   if (typeof ref === 'string') {
@@ -41,7 +41,7 @@ export const getRules = (): Rule[] => {
   const input = core.getMultilineInput('rules');
 
   return input.map((line) => {
-    const [first , others] = line.split('<-');
+    const [first, others] = line.split('<-');
     const base = first?.trim() ?? '';
     const heads = others?.trim()?.split(' ') ?? [];
 

@@ -14,7 +14,7 @@ describe('input', () => {
     github.context.payload = payload;
 
     inputs = {};
-    jest.spyOn(core, 'getMultilineInput').mockImplementation(name => {
+    jest.spyOn(core, 'getMultilineInput').mockImplementation((name) => {
       const value = inputs[name];
       if (!value || !Array.isArray(value)) throw new Error(`Input required and not supplied: ${name}`);
       return value;
@@ -50,7 +50,7 @@ describe('input', () => {
 
       expect(baseBranchName).toEqual('main');
     });
-    
+
     it('Should throw error - no base branch name', () => {
       payload.pull_request = {
         number: 0,
@@ -59,7 +59,7 @@ describe('input', () => {
       expect(() => getBaseBranchName()).toThrow('Failed to get base branch name');
     });
   });
-  
+
   describe('getHeadBranchName', () => {
     it('Should return head branch name', () => {
       payload.pull_request = {
@@ -73,7 +73,7 @@ describe('input', () => {
 
       expect(headBranchName).toEqual('development');
     });
-    
+
     it('Should throw error - no head branch name', () => {
       payload.pull_request = {
         number: 0,
