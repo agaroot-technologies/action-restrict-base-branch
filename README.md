@@ -1,3 +1,8 @@
+> [!CAUTION]
+> The repository has been archived and will no longer be maintained.  
+> Moving forward, maintenance will be conducted in the following repository:  
+> https://github.com/praha-inc/action-restrict-base-branch
+
 # action-restrict-base-branch
 
 [![license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/agaroot-technologies/action-restrict-base-branch/blob/main/LICENSE)
